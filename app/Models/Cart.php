@@ -10,7 +10,8 @@ class Cart extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id'
+        'user_id',
+        'expires_at'
     ];
 
     public function user()
@@ -21,5 +22,12 @@ class Cart extends Model
     public function items()
     {
         return $this->hasMany(CartItem::class);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'expires_at' => 'datetime',
+        ];
     }
 }

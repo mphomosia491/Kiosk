@@ -31,17 +31,17 @@ class User extends Authenticatable
         ];
     }
 
-    protected function wallet()
+    public function wallet()
     {
         return $this->hasOne(Wallet::class);
     }
 
-    protected function cart()
+    public function cart()
     {
         return $this->hasOne(Cart::class);
     }
 
-    protected function orders()
+    public function orders()
     {
         return $this->hasMany(Order::class);
     }

@@ -33,8 +33,8 @@ class CartController extends Controller
 
         $product->decrement('stock', $validated['quantity']);
 
-        $cartItem = CartItem::where('cart_id', $cart_id)
-            ->where('product_id', $product_id)
+        $cartItem = CartItem::where('cart_id', $cart->id)
+            ->where('product_id', $product->id)
             ->first();
         
         if ($cartItem)
@@ -58,15 +58,23 @@ class CartController extends Controller
                 'message' => 'Product added to cart'
             ]);
     }
-    public function index(Request $request)
-    {
-        $cart = $request->user()
-            ->cart()
-            ->with('items.product')
-            ->first();
+    // public function index(Request $request)
+    // {
+    //     $cart = $request->user()
+    //         ->cart()
+    //         ->with('items.product')
+    //         ->first();
         
-        return response()->json($cart);
-    }
+    //     return response()->json($cart);
+    // }
+public function index(Request $request)
+{
+    $cart = $request->user()->cart;
+
+    return response()->json(
+        $cart->items()->with('product')->get()
+    );
+}
 
     public function remove(Request $request, $itemId)
     {
@@ -98,13 +106,13 @@ class CartController extends Controller
             ], 422);
         }
 
-        $user = request->user();
+        $user = $request->user();
 
         $cart = $user->cart()
             ->with('items.product')
             ->first();
         
-            if($cart || $cart->items->isEmpty())
+            if(!$cart || $cart->items->isEmpty())
                 {
                     return response()->json([
                         'message' => 'Cart is empty'
@@ -143,8 +151,9 @@ class CartController extends Controller
                 'order_number' => 'KSK-' . now()->format('YmdHis'),
                 'total_price' => $total,
                 'total_items' => $totalItems,
-                'delivery_type' => $validated['delivery_address'] ?? null,
-                'delivery_fee' => $delivery_fee,
+                'delivery_type' => $validated['delivery_type'],
+                'delivery_address' => $validated['delivery_address'] ?? null,
+                'delivery_fee' => $deliveryFee,
                 'status' => 'completed'
             ]);
 

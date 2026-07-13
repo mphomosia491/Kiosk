@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios"
+import Navbar from "../components/NavBar";
 
 function Products(){
     const [products, setProducts] = useState([]);
@@ -41,12 +42,10 @@ function Products(){
     };
     return(
         <div>
+            <Navbar />
+            
             <h1>Products</h1>
-
-            <a href="/cart">
-                Go To Cart
-            </a>
-
+            
             {products.map((product) => (
                 <div key={product.id}>
                     <img src={product.image_url}

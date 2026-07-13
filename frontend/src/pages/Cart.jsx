@@ -1,9 +1,20 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
+import CheckoutModal from "../components/CheckoutModal";
 
 function Cart(){
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0);
+    const [walletBalance, setWalletBalance] = useState(0);
+    const [showCheckout, setShowCheckout] = useState(false);
+
+    const openCheckout = () => {
+        setShowCheckout(true);
+    };
+
+    const closeCheckout = () => {
+        setShowCheckout(false);
+    };
 
     useEffect(() => {
         loadCart();
@@ -19,7 +30,13 @@ function Cart(){
             response.data.forEach((item) => {
                 sum += item.price * item.quantity;
             });
+
             setTotal(sum);
+
+            const wallet = await api.post("/wallet/balance");
+
+            setWalletBalance(wallet.data.balance);
+
         }catch (err){
             console.error(err);
         }
@@ -27,7 +44,7 @@ function Cart(){
     const removeItem = async (itemId) => {
         try{
             await api.delete(`/cart/remove/${itemId}`);
-            loadCart();
+            await loadCart();
         } catch (err){
             console.error(err);
         }
@@ -53,18 +70,32 @@ function Cart(){
                             R{item.price}
                         </p>
                         <button onClick={() =>
-                            removedItem(item.id)
+                            removeItem(item.id)
                         }>
                             Remove
                         </button>
                     </div>
                 ))}
+
                 <hr />
+
                 <h2>
                     Total: R{total}
                 </h2>
+
+                <button onClick= {openCheckout}>
+                    Checkout
+                </button>
+
                 </>
             )}
+            <CheckoutModal
+                isOpen={showCheckout}
+                onClose={closeCheckout}
+                total={total}
+                walletBalance={walletBalance}
+                refreshWallet={loadCart}
+            />
         </div>
     );
 }

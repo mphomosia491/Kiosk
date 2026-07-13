@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\WalletController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\OrderController;
 
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -38,4 +39,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/cart', [CartController::class, 'index']);
     Route::delete('/cart/remove/{itemId}', [CartController::class, 'remove']);
     Route::post('/cart/checkout', [CartController::class, 'checkout']);
+
+    //Orders
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/orders/{order}', [OrderController::class, 'show']);
 });

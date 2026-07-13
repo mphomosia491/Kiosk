@@ -67,28 +67,31 @@ class CartController extends Controller
         
     //     return response()->json($cart);
     // }
-public function index(Request $request)
-{
-    $cart = $request->user()->cart;
+    public function index(Request $request)
+    {
+        $cart = $request->user()->cart;
 
-    return response()->json(
-        $cart->items()->with('product')->get()
-    );
-}
+        return response()->json(
+            $cart->items()->with('product')->get()
+        );
+    }
 
     public function remove(Request $request, $itemId)
     {
-        $cartItem = CartItem::with('product')
-            ->findOrFail($itemId);
+       $cart = $request->user()->cart;
 
+       $cartItem = $cart->items()
+            ->with('product')
+            ->findOrFail($itemId);
+        
         $cartItem->product->increment(
-            'stock',
-            $cartItem->quantity
-        );
+            'stock', 
+            $cartItem->quantity);
+
         $cartItem->delete();
 
         return response()->json([
-            'message' => 'Item removed'
+            'message' => 'Item removed successfully'
         ]);
     }
     public function checkout(Request $request)

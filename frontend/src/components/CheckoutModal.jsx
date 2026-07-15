@@ -1,6 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
-import api from "../api/axios";
+import cartService from "../services/cartService";
+import walletService from "../services/walletService";
 
 function CheckoutModal({
     isOpen,
@@ -32,13 +33,11 @@ function CheckoutModal({
         try{
             setFunding(true);
 
-            const response = await api.post("/wallet/fund",
-                {
-                    amount: Number(fundAmount),
-                }
+            const wallet = await walletService.fundWallet(
+                Number(fundAmount)
             );
 
-            setMessage(response.data.message);
+            setMessage(wallet.message);
 
             setFundAmount("");
 
@@ -63,16 +62,15 @@ function CheckoutModal({
         try{
             setCheckingOut(true);
 
-            const response = await api.post("/cart/checkout",
-                {
-                    delivery_type: deliveryType,
-                    delivery_address:
+            const order = await cartService.checkout({
+                delivery_type: deliveryType,
+                delivery_address:
                     deliveryType === "delivery"
-                        ? deliveryAddress
-                        : null,
-                }
-            );
-            setMessage(response.data.message);
+                    ? deliveryAddress
+                    : null,
+            });
+
+            setMessage(order.message);
 
             await refreshWallet();
 

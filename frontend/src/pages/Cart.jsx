@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import api from "../api/axios";
+import cartService from "../services/cartService"
 import CheckoutModal from "../components/CheckoutModal";
+import walletService from "../services/walletService";
 
 function Cart(){
     const [items, setItems] = useState([]);
@@ -22,20 +23,21 @@ function Cart(){
 
     const loadCart = async () => {
         try {
-            const response = await api.get("/cart");
-            setItems(response.data);
+            const items = await cartService.getCart();
+
+            setItems(items);
 
             let sum = 0;
 
-            response.data.forEach((item) => {
+            items.forEach((item) => {
                 sum += item.price * item.quantity;
             });
 
             setTotal(sum);
 
-            const wallet = await api.post("/wallet/balance");
+            const wallet = await walletService.getBalance();
 
-            setWalletBalance(wallet.data.balance);
+            setWalletBalance(wallet.balance);
 
         }catch (err){
             console.error(err);
@@ -43,12 +45,13 @@ function Cart(){
     };
     const removeItem = async (itemId) => {
         try{
-            await api.delete(`/cart/remove/${itemId}`);
+            await  cartService.removeItem(itemId);
             await loadCart();
         } catch (err){
             console.error(err);
         }
     };
+
     return (
         <div>
             <h1>My Cart</h1>

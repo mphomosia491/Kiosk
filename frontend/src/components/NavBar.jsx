@@ -20,6 +20,8 @@ function Navbar() {
 
             <Link to="/cart">Cart</Link>
 
+            <Link to="/orders">Orders</Link>
+
             <button onClick={logout}>
                 Logout
             </button>

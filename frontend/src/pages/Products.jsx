@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/axios"
+import productService from "../services/productService";
 import Navbar from "../components/NavBar";
 
 function Products(){
@@ -12,8 +12,10 @@ function Products(){
 
     const fetchProducts = async () => {
         try {
-            const response = await api.get("/products");
-            setProducts(response.data);
+            const products = await productService.getProducts();
+
+            setProducts(products);
+
         } catch (err){
             console.error(err);
         }finally{
@@ -25,12 +27,10 @@ function Products(){
     }
     const addToCart = async (productId) =>{
         try {
-            await api.post("/cart/add", {
-                product_id: productId,
-                quantity: 1,
-            });
+            await productService.addToCart(productId);
 
             alert("Product added to cart");
+
             fetchProducts();
         }catch (err){
             console.error(err);

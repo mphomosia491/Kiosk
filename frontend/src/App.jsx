@@ -7,6 +7,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Wallet from "./pages/Wallet";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Orders from "./pages/Orders";
 
 function App() {
   return(
@@ -47,6 +48,15 @@ function App() {
             {
               <ProtectedRoute>
                   <Wallet />
+              </ProtectedRoute>
+            } 
+        />
+        <Route 
+            path="/orders" 
+            element=
+            {
+              <ProtectedRoute>
+                  <Orders />
               </ProtectedRoute>
             } 
         />

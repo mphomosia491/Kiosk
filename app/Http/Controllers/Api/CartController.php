@@ -64,7 +64,7 @@ class CartController extends Controller
     //         ->cart()
     //         ->with('items.product')
     //         ->first();
-        
+    
     //     return response()->json($cart);
     // }
     public function index(Request $request)

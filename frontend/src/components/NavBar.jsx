@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 
 function Navbar() {
     const navigate = useNavigate();
@@ -11,20 +11,30 @@ function Navbar() {
     };
 
     return (
-        <nav>
-            <h2>Kiosk</h2>
+        <nav className="navbar">
 
-            <Link to="/">Products</Link>
+            <div className="navbar-logo">
+                <h2>Blue reserve</h2>
+            </div>
+            
+            <div className="navbar-links">
 
-            <Link to="/wallet">Wallet</Link>
+                <NavLink to="/">Products</NavLink>
 
-            <Link to="/cart">Cart</Link>
+                <NavLink to="/wallet">Wallet</NavLink>
 
-            <Link to="/orders">Orders</Link>
+                <NavLink to="/cart">Cart</NavLink>
 
-            <button onClick={logout}>
-                Logout
-            </button>
+                <NavLink to="/orders">Orders</NavLink>
+
+            </div>
+           
+            <div>
+                <button onClick={logout}>
+                    Logout
+                </button>
+            </div>
+           
         </nav>
     );
 }

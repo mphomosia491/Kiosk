@@ -448,7 +448,7 @@ function Orders() {
 
             <>
 
-                Hide Products
+                Hide Fragrances
 
                 <ChevronUp size={18} />
 
@@ -458,7 +458,7 @@ function Orders() {
 
             <>
 
-                View Products
+                View Fragrances
 
                 <ChevronDown size={18} />
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Navbar from "../components/NavBar";
 import walletService from "../services/walletService";
+import Layout from "../components/ui/Layout/Layout";
 
 function Wallet() {
     const [balance, setBalance] = useState(0);
@@ -52,7 +52,7 @@ function Wallet() {
 
     return (
         <>
-            <Navbar />
+            <Layout>
 
             <h1> Wallet </h1>
             
@@ -80,6 +80,8 @@ function Wallet() {
                 </button>
 
             </form>
+
+            </Layout>
         </>
     );
 }

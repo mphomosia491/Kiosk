@@ -1,0 +1,18 @@
+.app-layout {
+    min-height: calc(100vh - 80px);
+
+    background: radial-gradient(circle at top right,
+            rgba(26,43,92,.55),
+            transparent 40%),
+        linear-gradient(
+            180deg,
+            #0B1021 0%,
+            #101735 100%
+        );
+
+    padding: 3rem;
+
+    color: #F5EBE1;
+
+    font-family: "Inter", sans-serif;
+}

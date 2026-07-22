@@ -1,0 +1,1051 @@
+/* ===========================================================
+   OVERLAY
+=========================================================== */
+
+.checkout-overlay{
+
+    position:fixed;
+    inset:0;
+
+    background:
+        radial-gradient(circle at top,
+            rgba(24,45,96,.28),
+            rgba(0,0,0,.88));
+
+    backdrop-filter:blur(10px);
+
+    z-index:999;
+
+    animation:fadeIn .35s ease;
+
+}
+
+/* ===========================================================
+   MODAL
+=========================================================== */
+
+.checkout-modal{
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:min(1120px,95vw);
+
+    max-height:92vh;
+
+    overflow-y:auto;
+
+    padding:2.5rem;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #172959 0%,
+            #101C44 40%,
+            #09122C 100%
+        );
+
+    border:1px solid rgba(255,216,74,.28);
+
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.65),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    color:var(--color-text);
+
+    z-index:1000;
+
+    animation:modalIn .4s ease;
+
+}
+
+/* ===========================================================
+   SCROLLBAR
+=========================================================== */
+
+.checkout-modal::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+.checkout-modal::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.checkout-modal::-webkit-scrollbar-thumb{
+
+    background:rgba(255,216,74,.35);
+
+    border-radius:100px;
+
+}
+
+/* ===========================================================
+   CLOSE BUTTON
+=========================================================== */
+
+.checkout-close{
+
+    position:absolute;
+
+    top:24px;
+    right:24px;
+
+    width:46px;
+    height:46px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:#FFD84A;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.checkout-close:hover{
+
+    background:
+        rgba(255,216,74,.12);
+
+    transform:rotate(90deg);
+
+}
+
+/* ===========================================================
+   HEADER
+=========================================================== */
+
+.checkout-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1.5rem;
+
+    margin-bottom:2.5rem;
+
+}
+
+.checkout-header-icon{
+
+    width:72px;
+    height:72px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(circle,
+            #FFE79B,
+            #FFD84A);
+
+    color:#6B4D00;
+
+    box-shadow:
+        0 0 30px rgba(255,216,74,.35);
+
+}
+
+.checkout-title{
+
+    margin:0;
+
+    font-family:var(--font-heading);
+
+    font-size:2.35rem;
+
+    font-weight:700;
+
+    color:#FFF4D3;
+
+    letter-spacing:.6px;
+
+}
+
+.checkout-subtitle{
+
+    margin-top:.45rem;
+
+    color:var(--color-text-muted);
+
+    font-size:1rem;
+
+}
+
+/* ===========================================================
+   GRID
+=========================================================== */
+
+.checkout-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        1.1fr
+        .9fr;
+
+    gap:2rem;
+
+}
+
+.checkout-left,
+.checkout-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.6rem;
+
+}
+
+/* ===========================================================
+   CARDS
+=========================================================== */
+
+.checkout-card{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.02)
+        );
+
+    border:1px solid rgba(255,216,74,.18);
+
+    border-radius:22px;
+
+    padding:1.5rem;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    transition:.35s;
+
+}
+
+.checkout-card:hover{
+
+    border-color:rgba(255,216,74,.45);
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.28);
+
+}
+
+/* ===========================================================
+   CARD TITLES
+=========================================================== */
+
+.card-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.8rem;
+
+    margin-bottom:1.4rem;
+
+    font-family:var(--font-heading);
+
+    color:#FFE8A6;
+
+    font-size:1.18rem;
+
+    font-weight:600;
+
+}
+
+.card-title svg{
+
+    color:#FFD84A;
+
+}
+
+/* ===========================================================
+   ORDER SUMMARY
+=========================================================== */
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:.9rem 0;
+
+    color:var(--color-text-muted);
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+.summary-row strong{
+
+    color:#FFF5DE;
+
+    font-weight:600;
+
+}
+
+.summary-total{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:1.5rem;
+
+    padding-top:1.5rem;
+
+    border-top:1px solid rgba(255,216,74,.18);
+
+    font-family:var(--font-heading);
+
+    font-size:1.45rem;
+
+    color:#FFE9B0;
+
+}
+
+.summary-total strong{
+
+    color:#FFD84A;
+
+    font-size:1.7rem;
+
+}
+
+/* ===========================================================
+   WALLET
+=========================================================== */
+
+.wallet-balance{
+
+    font-family:var(--font-heading);
+
+    font-size:2.5rem;
+
+    font-weight:700;
+
+    color:#FFD84A;
+
+    margin-bottom:1rem;
+
+}
+
+/* ===========================================================
+   ANIMATIONS
+=========================================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes modalIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-46%)
+            scale(.94);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+
+    }
+
+}
+
+/* ===========================================================
+   BALANCE STATUS
+=========================================================== */
+
+.balance-success,
+.balance-error{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:1rem;
+
+    margin-top:1rem;
+
+    padding:1.15rem;
+
+    border-radius:18px;
+
+}
+
+.balance-success{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(46,139,87,.18),
+            rgba(46,139,87,.08)
+        );
+
+    border:1px solid rgba(46,139,87,.45);
+
+}
+
+.balance-success svg{
+
+    color:#57D98A;
+
+    flex-shrink:0;
+
+}
+
+.balance-success strong{
+
+    display:block;
+
+    margin-bottom:.35rem;
+
+    color:#CFF7DD;
+
+    font-family:var(--font-heading);
+
+}
+
+.balance-success p{
+
+    color:rgba(255,255,255,.75);
+
+    line-height:1.5;
+
+}
+
+.balance-error{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(178,34,34,.18),
+            rgba(178,34,34,.08)
+        );
+
+    border:1px solid rgba(255,80,80,.35);
+
+}
+
+.balance-error svg{
+
+    color:#FF6B6B;
+
+    flex-shrink:0;
+
+}
+
+.balance-error strong{
+
+    display:block;
+
+    margin-bottom:.35rem;
+
+    color:#FFD5D5;
+
+    font-family:var(--font-heading);
+
+}
+
+.balance-error p{
+
+    color:rgba(255,255,255,.75);
+
+    line-height:1.5;
+
+}
+
+.balance-error span{
+
+    color:#FFD84A;
+
+    font-weight:700;
+
+}
+
+/* ===========================================================
+   INPUTS
+=========================================================== */
+
+.checkout-input,
+.checkout-textarea{
+
+    width:100%;
+
+    margin-top:.8rem;
+
+    padding:1rem 1.2rem;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,216,74,.18);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:#FFF8EB;
+
+    font-size:1rem;
+
+    transition:.3s;
+
+    outline:none;
+
+    font-family:var(--font-body);
+
+}
+
+.checkout-input::placeholder,
+.checkout-textarea::placeholder{
+
+    color:rgba(255,255,255,.45);
+
+}
+
+.checkout-input:focus,
+.checkout-textarea:focus{
+
+    border-color:#FFD84A;
+
+    box-shadow:
+        0 0 18px rgba(255,216,74,.18);
+
+}
+
+/* ===========================================================
+   MESSAGE
+=========================================================== */
+
+.checkout-message{
+
+    margin-top:1rem;
+
+    color:#FFD84A;
+
+    font-size:.95rem;
+
+}
+
+/* ===========================================================
+   GOLD BUTTON
+=========================================================== */
+
+.gold-button{
+
+    width:100%;
+
+    margin-top:1rem;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:.8rem;
+
+    padding:1rem;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    background:
+        linear-gradient(
+            180deg,
+            #FFEAA4,
+            #FFD84A
+        );
+
+    color:#4E3700;
+
+    transition:.35s;
+
+    box-shadow:
+        0 10px 22px rgba(255,216,74,.28);
+
+}
+
+.gold-button:hover:not(:disabled){
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 16px 28px rgba(255,216,74,.35);
+
+}
+
+.gold-button:disabled{
+
+    opacity:.65;
+
+    cursor:not-allowed;
+
+}
+
+/* ===========================================================
+   DELIVERY OPTIONS
+=========================================================== */
+
+.delivery-options{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1rem;
+
+}
+
+.delivery-card{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+
+    padding:1.25rem;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,216,74,.18);
+
+    background:
+        rgba(255,255,255,.03);
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.delivery-card:hover{
+
+    border-color:rgba(255,216,74,.45);
+
+    transform:translateY(-2px);
+
+}
+
+.delivery-card.active{
+
+    border-color:#FFD84A;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,216,74,.14),
+            rgba(255,216,74,.05)
+        );
+
+    box-shadow:
+        0 0 18px rgba(255,216,74,.15);
+
+}
+
+.delivery-card input{
+
+    display:none;
+
+}
+
+.delivery-card svg{
+
+    color:#FFD84A;
+
+    flex-shrink:0;
+
+}
+
+.delivery-card h4{
+
+    margin:0;
+
+    font-family:var(--font-heading);
+
+    color:#FFF2C9;
+
+    font-size:1.15rem;
+
+}
+
+.delivery-card p{
+
+    margin-top:.35rem;
+
+    color:rgba(255,255,255,.65);
+
+    line-height:1.45;
+
+}
+
+/* ===========================================================
+   TEXTAREA
+=========================================================== */
+
+.checkout-textarea{
+
+    resize:vertical;
+
+    min-height:130px;
+
+}
+
+/* ===========================================================
+   SECURE PAYMENT CARD
+=========================================================== */
+
+.secure-card{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,216,74,.08),
+            rgba(255,216,74,.03)
+        );
+
+}
+
+.secure-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.8rem;
+
+    margin-bottom:1rem;
+
+    font-family:var(--font-heading);
+
+    font-size:1.1rem;
+
+    color:#FFE8A6;
+
+}
+
+.secure-header svg{
+
+    color:#FFD84A;
+
+}
+
+.secure-card p{
+
+    margin:0;
+
+    line-height:1.7;
+
+    color:rgba(255,255,255,.72);
+
+}
+
+/* ===========================================================
+   FOOTER
+=========================================================== */
+
+.checkout-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:1rem;
+
+    margin-top:2.5rem;
+
+    padding-top:2rem;
+
+    border-top:1px solid rgba(255,216,74,.18);
+
+}
+
+/* ===========================================================
+   CANCEL BUTTON
+=========================================================== */
+
+.cancel-button{
+
+    min-width:170px;
+
+    padding:1rem 1.6rem;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,216,74,.28);
+
+    background:transparent;
+
+    color:#FFF4DA;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.cancel-button:hover{
+
+    background:rgba(255,216,74,.08);
+
+    border-color:#FFD84A;
+
+}
+
+/* ===========================================================
+   CONFIRM BUTTON
+=========================================================== */
+
+.confirm-button{
+
+    min-width:240px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:.8rem;
+
+    padding:1rem 1.8rem;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            180deg,
+            #FFF1B9,
+            #FFD84A
+        );
+
+    color:#5C4200;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    transition:.35s;
+
+    box-shadow:
+        0 12px 28px rgba(255,216,74,.30);
+
+}
+
+.confirm-button:hover:not(:disabled){
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 18px 36px rgba(255,216,74,.38);
+
+}
+
+.confirm-button:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+
+}
+
+/* ===========================================================
+   MOBILE
+=========================================================== */
+
+@media (max-width:950px){
+
+    .checkout-modal{
+
+        width:95vw;
+
+        padding:1.75rem;
+
+        max-height:95vh;
+
+    }
+
+    .checkout-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .checkout-title{
+
+        font-size:2rem;
+
+    }
+
+    .wallet-balance{
+
+        font-size:2rem;
+
+    }
+
+}
+
+@media (max-width:640px){
+
+    .checkout-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .checkout-header-icon{
+
+        width:60px;
+        height:60px;
+
+    }
+
+    .checkout-title{
+
+        font-size:1.7rem;
+
+    }
+
+    .checkout-footer{
+
+        flex-direction:column-reverse;
+
+    }
+
+    .cancel-button,
+    .confirm-button{
+
+        width:100%;
+
+        min-width:unset;
+
+    }
+
+    .checkout-modal{
+
+        padding:1.5rem;
+
+        border-radius:22px;
+
+    }
+
+    .summary-total{
+
+        font-size:1.25rem;
+
+    }
+
+    .summary-total strong{
+
+        font-size:1.45rem;
+
+    }
+
+}
+
+/* ===========================================================
+   SMALL POLISH
+=========================================================== */
+
+.checkout-card,
+.delivery-card,
+.confirm-button,
+.cancel-button,
+.gold-button,
+.checkout-input,
+.checkout-textarea{
+
+    transition:
+        all .3s ease;
+
+}
+
+.checkout-card:hover{
+
+    backdrop-filter:blur(8px);
+
+}

@@ -1,0 +1,237 @@
+.hero{
+
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(420px,1fr));
+
+    align-items:center;
+
+    gap:5rem;
+
+    min-height:80vh;
+
+    overflow:hidden;
+
+    margin-bottom:6rem;
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+
+    height:650px;
+
+    right:-180px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(39,83,255,.18),
+            transparent 70%
+        );
+
+    filter:blur(60px);
+
+    pointer-events:none;
+}
+
+@keyframes floatBottle{
+
+    0%{
+
+        transform:
+        translateY(0px);
+    }
+
+    50%{
+
+        transform:
+        translateY(-12px);
+    }
+
+    100%{
+
+        transform:
+        translateY(0px);
+    }
+
+}
+
+.hero-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.5rem;
+}
+
+.hero-label{
+
+    color:#D4AF37;
+
+    letter-spacing:4px;
+
+    font-size:.9rem;
+
+    font-weight:700;
+}
+
+.hero h1{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(3rem,7vw,5rem);
+
+    color:#F5EBE1;
+
+    line-height:1.05;
+}
+
+.hero p{
+
+    color:rgba(245,235,225,.75);
+
+    font-size:1.15rem;
+
+    max-width:520px;
+
+    line-height:1.8;
+}
+
+.hero-button{
+
+    width:220px;
+
+    padding:1rem;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+    180deg,
+    #E8C65C,
+    #C89C20
+    );
+
+    color:#08101F;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:.75rem;
+}
+
+.hero-button span{
+
+    transition:.3s;
+}
+
+.hero-button:hover span{
+
+    transform:translateX(6px);
+}
+
+.hero-image{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+.hero-image img{
+
+    width:min(520px,100%);
+
+    animation:
+        floatBottle
+        6s ease-in-out infinite;
+
+    filter:
+        drop-shadow(
+            0 40px 45px rgba(0,0,0,.45)
+        );
+}
+
+.hero-brands{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:1rem;
+
+    margin-top:.75rem;
+}
+
+.hero-brands span{
+
+    color:#D4AF37;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    padding:.55rem 1rem;
+
+    border-radius:999px;
+
+    font-size:.8rem;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+}
+
+.hero-brands span:hover{
+
+    background:rgba(212,175,55,.08);
+
+    border-color:#D4AF37;
+}
+
+@media (max-width: 900px) {
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+        gap:3rem;
+    }
+
+    .hero-content{
+
+        align-items:center;
+    }
+
+    .hero-brands{
+
+        justify-content:center;
+    }
+}

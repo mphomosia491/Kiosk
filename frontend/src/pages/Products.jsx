@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import productService from "../services/productService";
-import Navbar from "../components/NavBar";
+import Layout from "../components/ui/Layout/Layout";
+import "./products.css";
+import ProductCard from "../components/ui/ProductCard/ProductCard";
+import HeroSection from "../components/ui/Hero/HeroSection";
+import SectionHeading from "../components/ui/SectionHeading/SectionHeading";
 
 function Products(){
     const [products, setProducts] = useState([]);
@@ -41,27 +45,29 @@ function Products(){
         }
     };
     return(
-        <div>
-            <Navbar />
+            <Layout>
             
-            <h1>Products</h1>
-            
-            {products.map((product) => (
-                <div key={product.id}>
-                    <img src={product.image_url}
-                    alt={product.name}
-                    width="200"
+            <HeroSection />
+
+
+            <SectionHeading 
+                label="BLUE RESERVE"
+                title="Our collection"
+                subtitle="Curated luxury fragrances selected for timeless elegance"
+            />
+
+            <section className="products-grid">
+
+                {products.map((product) => (
+                <ProductCard
+                    key={product.id}
+                    product={product}
+                    onAddToCart={addToCart}
                 />
-                <h3>{product.name}</h3>
-                <p>{product.brand}</p>
-                <p>R{product.price}</p>
-                <p>Stock: {product.stock}</p>
-                <button onClick={() => addToCart(product.id)}>
-                    Add To Cart
-                </button>
-            </div>
-            ))}
-        </div>
+                ))}
+
+            </section>
+            </Layout>
     );
 
 }

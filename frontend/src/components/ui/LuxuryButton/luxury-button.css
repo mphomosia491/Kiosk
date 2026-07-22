@@ -1,0 +1,96 @@
+.luxury-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:.75rem;
+
+    padding:1rem 2rem;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:
+        transform .3s,
+        box-shadow .3s,
+        background .3s;
+
+    font-weight:600;
+
+    font-size:.95rem;
+
+    letter-spacing:.4px;
+
+    border:none;
+}
+
+.luxury-button.primary{
+
+    background:
+        linear-gradient(
+            180deg,
+            #E8C65C,
+            #C89C20
+        );
+
+    color:#08101F;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.22);
+}
+
+.luxury-button.primary:hover{
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.35);
+}
+
+.luxury-button.outline{
+
+    background:transparent;
+
+    color:#D4AF37;
+
+    border:
+
+        1px solid rgba(212,175,55,.4);
+}
+
+.luxury-button.outline:hover{
+
+    background:
+
+        rgba(212,175,55,.08);
+
+    border-color:#D4AF37;
+}
+
+.luxury-button.ghost{
+
+    background:transparent;
+
+    color:#F5EBE1;
+}
+
+.luxury-button.ghost:hover{
+
+    color:#D4AF37;
+}
+
+.luxury-button:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+}
